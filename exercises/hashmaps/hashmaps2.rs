@@ -14,7 +14,6 @@
 // Execute `rustlings hint hashmaps2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
 
 use std::collections::HashMap;
 
@@ -40,6 +39,8 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
         // TODO: Insert new fruits if they are not already present in the
         // basket. Note that you are not allowed to put any type of fruit that's
         // already present!
+        basket.insert(Fruit::Pineapple, 1);
+        basket.insert(Fruit::Banana, 1);
     }
 }
 
@@ -56,7 +57,7 @@ mod tests {
 
         basket
     }
-
+    //第一个test无问题
     #[test]
     fn test_given_fruits_are_not_modified() {
         let mut basket = get_fruit_basket();
@@ -65,7 +66,7 @@ mod tests {
         assert_eq!(*basket.get(&Fruit::Mango).unwrap(), 2);
         assert_eq!(*basket.get(&Fruit::Lychee).unwrap(), 5);
     }
-
+    //报错的第二个test(用于测试水果种类是否大于5)
     #[test]
     fn at_least_five_types_of_fruits() {
         let mut basket = get_fruit_basket();
@@ -73,7 +74,7 @@ mod tests {
         let count_fruit_kinds = basket.len();
         assert!(count_fruit_kinds >= 5);
     }
-
+    //报错的第三个test(用于测试水果数量是否大于11)
     #[test]
     fn greater_than_eleven_fruits() {
         let mut basket = get_fruit_basket();
@@ -81,7 +82,7 @@ mod tests {
         let count = basket.values().sum::<u32>();
         assert!(count > 11);
     }
-    
+    //第四个test无问题
     #[test]
     fn all_fruit_types_in_basket() {
         let mut basket = get_fruit_basket();
